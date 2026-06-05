@@ -25,7 +25,7 @@ export const VIDEO = {
 } as const;
 
 export const WA_LINK =
-  "https://wa.me/2348000000000?text=Hello%20Pearl%20Gifts%2C%20I%27d%20like%20to%20discuss%20a%20gifting%20order.";
+  "https://wa.me/2348170131438?text=Hello%20Pearl%20Gifts%2C%20I%27d%20like%20to%20discuss%20a%20gifting%20order.";
 
 export const NAV_LINKS = [
   { label: "Collections", to: "/collections" },

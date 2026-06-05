@@ -17,23 +17,23 @@ export function SiteNav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled || open
-          ? "bg-white/95 backdrop-blur-md shadow-soft border-b border-[var(--gold)]/30 rounded-b-[28px] py-1.5 md:py-2.5"
-          : "bg-transparent border-transparent py-4 md:py-6"
+          ? "bg-white/95 backdrop-blur-md shadow-soft border-b border-[var(--gold)]/30 py-1.5 md:py-2"
+          : "bg-white/80 backdrop-blur-md border-b border-[var(--gold)]/15 py-3 md:py-4"
       }`}
     >
       <style>{`
         header {
-          border-radius: ${scrolled || open ? "0 0 28px 28px" : "0"};
+          border-radius: ${scrolled || open ? "0 0 24px 24px" : "0"};
         }
       `}</style>
       <div className="mx-auto max-w-7xl px-5">
-        <div className="flex items-center justify-between transition-all">
+        <div className="flex items-center justify-between transition-all font-sans">
           <Link to="/" className="flex items-center gap-2">
             <img
               src={LOGO_FULL_URL}
               alt="Pearl Gifts"
               className={`object-contain py-1 transition-all duration-300 ${
-                scrolled ? "h-[70px] md:h-[95px]" : "h-[90px] md:h-[135px]"
+                scrolled ? "h-[50px] md:h-[65px]" : "h-[65px] md:h-[85px]"
               }`}
             />
           </Link>
@@ -87,8 +87,12 @@ export function SiteNav() {
                 rel="noreferrer"
                 className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20ba59] px-5 py-3 text-sm font-semibold text-white transition-all hover:scale-[1.01]"
               >
-                <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.031 0C5.408 0 .025 5.385.015 12.013c0 2.118.553 4.185 1.602 5.998L0 24l6.157-1.615c1.768.966 3.758 1.472 5.86 1.474H12.03c6.621 0 12.008-5.384 12.019-12.013C24.06 5.385 18.654 0 12.031 0zm7.1 16.963c-.29.818-1.524 1.572-2.106 1.674-.582.102-1.164.204-4.805-1.226-3.64-1.43-5.918-5.071-6.1-5.317-.182-.245-1.493-1.956-1.493-3.73s.927-2.656 1.255-3.004c.328-.348.728-.429.983-.429s.51.01.728.02c.219.01.51-.082.802.614.291.695.983 2.41 1.055 2.56.073.15.111.327.01.531-.1.204-.146.327-.291.511-.146.184-.31.409-.437.541-.146.15-.3.314-.128.614.173.299.764 1.26 1.64 2.039.873.778 1.61 1.019 1.91 1.15s.473.102.646-.092c.173-.194.747-.868.946-1.165.2-.297.4-.245.674-.143s1.748.828 2.049.981c.3.153.51.225.583.348.073.123.073.715-.218 1.533z"/>
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4 fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M12.031 0C5.408 0 .025 5.385.015 12.013c0 2.118.553 4.185 1.602 5.998L0 24l6.157-1.615c1.768.966 3.758 1.472 5.86 1.474H12.03c6.621 0 12.008-5.384 12.019-12.013C24.06 5.385 18.654 0 12.031 0zm7.1 16.963c-.29.818-1.524 1.572-2.106 1.674-.582.102-1.164.204-4.805-1.226-3.64-1.43-5.918-5.071-6.1-5.317-.182-.245-1.493-1.956-1.493-3.73s.927-2.656 1.255-3.004c.328-.348.728-.429.983-.429s.51.01.728.02c.219.01.51-.082.802.614.291.695.983 2.41 1.055 2.56.073.15.111.327.01.531-.1.204-.146.327-.291.511-.146.184-.31.409-.437.541-.146.15-.3.314-.128.614.173.299.764 1.26 1.64 2.039.873.778 1.61 1.019 1.91 1.15s.473.102.646-.092c.173-.194.747-.868.946-1.165.2-.297.4-.245.674-.143s1.748.828 2.049.981c.3.153.51.225.583.348.073.123.073.715-.218 1.533z" />
                 </svg>
                 Request Quote
               </a>
