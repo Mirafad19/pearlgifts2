@@ -14,8 +14,10 @@ export function SiteNav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 bg-white/80 backdrop-blur-md py-3 md:py-4 ${
-        scrolled || open ? "shadow-soft border-b border-[var(--gold)]/30 py-1.5 md:py-2" : "border-b border-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        scrolled || open
+          ? "bg-white/95 backdrop-blur-md py-1.5 md:py-2 shadow-soft border-b border-[var(--gold)]/30"
+          : "bg-transparent py-3 md:py-4 border-b border-transparent opacity-0 pointer-events-none"
       }`}
     >
       <div className="mx-auto max-w-7xl px-5">

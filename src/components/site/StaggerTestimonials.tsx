@@ -10,62 +10,52 @@ const testimonials = [
   {
     tempId: 0,
     testimonial: "Pearl Gifts delivered our entire year-end gifting seamlessly. The attention to detail is unmatched.",
-    by: "Adekunle Okonkwo, CEO at FinTech Innovations",
-    imgSrc: "https://api.dicebear.com/9.x/avataaars/svg?seed=Felix"
+    by: "Adekunle Okonkwo, CEO at FinTech Innovations"
   },
   {
     tempId: 1,
     testimonial: "The craftsmanship is genuinely world-class. Our clients rave about the quality and presentation.",
-    by: "Chioma Adeyemi, Head of Marketing at GrowthCorp",
-    imgSrc: "https://api.dicebear.com/9.x/avataaars/svg?seed=Aneka"
+    by: "Chioma Adeyemi, Head of Marketing at GrowthCorp"
   },
   {
     tempId: 2,
     testimonial: "We switched our corporate gifting to Pearl Gifts and haven't looked back. Exceptional service.",
-    by: "Tunde Okafor, Operations Manager at TechServe",
-    imgSrc: "https://api.dicebear.com/9.x/avataaars/svg?seed=Caleb"
+    by: "Tunde Okafor, Operations Manager at TechServe"
   },
   {
     tempId: 3,
     testimonial: "The personalization options are incredible. Every gift feels truly special and bespoke.",
-    by: "Ifeoma Nwankwo, Founder at BrandBuilders",
-    imgSrc: "https://api.dicebear.com/9.x/avataaars/svg?seed=Daisy"
+    by: "Ifeoma Nwankwo, Founder at BrandBuilders"
   },
   {
     tempId: 4,
     testimonial: "Pearl Gifts transformed how we recognize our team. The impact was immediate and memorable.",
-    by: "Seun Adebayo, HR Director at InnovateCo",
-    imgSrc: "https://api.dicebear.com/9.x/avataaars/svg?seed=Emery"
+    by: "Seun Adebayo, HR Director at InnovateCo"
   },
   {
     tempId: 5,
     testimonial: "From concept to delivery, every interaction with Pearl Gifts has been professional and delightful.",
-    by: "Folake Ejiofor, Brand Director at LuxuryBrand",
-    imgSrc: "https://api.dicebear.com/9.x/avataaars/svg?seed=Florence"
+    by: "Folake Ejiofor, Brand Director at LuxuryBrand"
   },
   {
     tempId: 6,
     testimonial: "The 72-hour turnaround on custom orders is a game-changer for our event planning.",
-    by: "Chinedu Ukaegbu, Event Manager at Apex Events",
-    imgSrc: "https://api.dicebear.com/9.x/avataaars/svg?seed=Garrett"
+    by: "Chinedu Ukaegbu, Event Manager at Apex Events"
   },
   {
     tempId: 7,
     testimonial: "Quality, reliability, and true partnership. That's what Pearl Gifts brings to every project.",
-    by: "Zainab Mohammed, Managing Partner at Corporate Solutions",
-    imgSrc: "https://api.dicebear.com/9.x/avataaars/svg?seed=Hailie"
+    by: "Zainab Mohammed, Managing Partner at Corporate Solutions"
   },
   {
     tempId: 8,
     testimonial: "The sustainable bamboo collection perfectly aligned with our CSR values. Perfect fit.",
-    by: "Nonso Amako, CSR Lead at EnviroTech",
-    imgSrc: "https://api.dicebear.com/9.x/avataaars/svg?seed=Jasmine"
+    by: "Nonso Amako, CSR Lead at EnviroTech"
   },
   {
     tempId: 9,
     testimonial: "Best investment in corporate gifting we've made. The ROI in client relationships is evident.",
-    by: "Grace Obi, Business Development at Strategic Ventures",
-    imgSrc: "https://api.dicebear.com/9.x/avataaars/svg?seed=Kendall"
+    by: "Grace Obi, Business Development at Strategic Ventures"
   }
 ];
 
@@ -74,23 +64,37 @@ interface TestimonialCardProps {
   testimonial: typeof testimonials[0];
   handleMove: (steps: number) => void;
   cardSize: number;
+  index: number;
 }
 
-const TestimonialCard: React.FC<TestimonialCardProps> = ({ 
-  position, 
-  testimonial, 
-  handleMove, 
-  cardSize 
+const TestimonialCard: React.FC<TestimonialCardProps> = ({
+  position,
+  testimonial,
+  handleMove,
+  cardSize,
+  index
 }) => {
   const isCenter = position === 0;
+  const initials = testimonial.by
+    .split(',')[0]
+    .split(' ')
+    .map(n => n[0])
+    .join('')
+    .toUpperCase();
+
+  const colors = [
+    'bg-blue-500', 'bg-purple-500', 'bg-pink-500', 'bg-green-500', 'bg-orange-500',
+    'bg-red-500', 'bg-indigo-500', 'bg-cyan-500', 'bg-emerald-500', 'bg-amber-500'
+  ];
+  const bgColor = colors[index % colors.length];
 
   return (
     <div
       onClick={() => handleMove(position)}
       className={cn(
         "absolute left-1/2 top-1/2 cursor-pointer border-2 p-8 transition-all duration-500 ease-in-out",
-        isCenter 
-          ? "z-10 bg-[var(--plum-deep)] text-white border-[var(--plum-deep)]" 
+        isCenter
+          ? "z-10 bg-[var(--plum-deep)] text-white border-[var(--plum-deep)]"
           : "z-0 bg-white text-[var(--ink)] border-[var(--border)] hover:border-[var(--plum)]/50"
       )}
       style={{
@@ -98,7 +102,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         height: cardSize,
         clipPath: `polygon(50px 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, calc(100% - 50px) 100%, 50px 100%, 0 100%, 0 0)`,
         transform: `
-          translate(-50%, -50%) 
+          translate(-50%, -50%)
           translateX(${(cardSize / 1.5) * position}px)
           translateY(${isCenter ? -65 : position % 2 ? 15 : -15}px)
           rotate(${isCenter ? 0 : position % 2 ? 2.5 : -2.5}deg)
@@ -115,14 +119,17 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           height: 2
         }}
       />
-      <img
-        src={testimonial.imgSrc}
-        alt={`${testimonial.by.split(',')[0]}`}
-        className="mb-4 h-14 w-12 rounded bg-[var(--muted)] object-cover object-top"
+      <div
+        className={cn(
+          "mb-4 h-14 w-12 rounded flex items-center justify-center text-white font-bold text-sm",
+          bgColor
+        )}
         style={{
           boxShadow: "3px 3px 0px var(--background)"
         }}
-      />
+      >
+        {initials}
+      </div>
       <h3 className={cn(
         "text-base sm:text-xl font-medium",
         isCenter ? "text-white" : "text-[var(--ink)]"
@@ -188,6 +195,7 @@ export const StaggerTestimonials: React.FC = () => {
             handleMove={handleMove}
             position={position}
             cardSize={cardSize}
+            index={index}
           />
         );
       })}
