@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const SQRT_5000 = Math.sqrt(5000);
@@ -75,18 +75,6 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   index
 }) => {
   const isCenter = position === 0;
-  const initials = testimonial.by
-    .split(',')[0]
-    .split(' ')
-    .map(n => n[0])
-    .join('')
-    .toUpperCase();
-
-  const colors = [
-    'bg-blue-500', 'bg-purple-500', 'bg-pink-500', 'bg-green-500', 'bg-orange-500',
-    'bg-red-500', 'bg-indigo-500', 'bg-cyan-500', 'bg-emerald-500', 'bg-amber-500'
-  ];
-  const bgColor = colors[index % colors.length];
 
   return (
     <div
@@ -122,13 +110,13 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       <div
         className={cn(
           "mb-4 h-14 w-12 rounded flex items-center justify-center text-white font-bold text-sm",
-          bgColor
+          isCenter ? "bg-[var(--gold)]/80" : "bg-[var(--plum)]/20"
         )}
         style={{
           boxShadow: "3px 3px 0px var(--background)"
         }}
       >
-        {initials}
+        <User className={cn("w-6 h-6", isCenter ? "text-white" : "text-[var(--plum)]")} />
       </div>
       <h3 className={cn(
         "text-base sm:text-xl font-medium",
