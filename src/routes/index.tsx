@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Award, Leaf, Crown, Sparkles } from "lucide-react";
+import { ArrowRight, MessageCircle, Award, Leaf, Crown, Sparkles } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { StaggerTestimonials } from "@/components/site/StaggerTestimonials";
-import { IMG, VIDEO } from "@/lib/site-data";
+import { IMG, VIDEO, WA_LINK } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -55,13 +54,21 @@ function Hero() {
               Explore Collections
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-3 rounded-xl border-2 border-[var(--plum-deep)] hover:bg-[var(--plum-deep)] text-[var(--plum-deep)] hover:text-white px-7 py-4 text-sm font-semibold shadow-soft transition-all duration-300"
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] px-7 py-4 text-sm font-semibold text-white shadow-soft transition-all duration-300 hover:scale-[1.02]"
             >
-              Request a Quote
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5 fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12.031 0C5.408 0 .025 5.385.015 12.013c0 2.118.553 4.185 1.602 5.998L0 24l6.157-1.615c1.768.966 3.758 1.472 5.86 1.474H12.03c6.621 0 12.008-5.384 12.019-12.013C24.06 5.385 18.654 0 12.031 0zm7.1 16.963c-.29.818-1.524 1.572-2.106 1.674-.582.102-1.164.204-4.805-1.226-3.64-1.43-5.918-5.071-6.1-5.317-.182-.245-1.493-1.956-1.493-3.73s.927-2.656 1.255-3.004c.328-.348.728-.429.983-.429s.51.01.728.02c.219.01.51-.082.802.614.291.695.983 2.41 1.055 2.56.073.15.111.327.01.531-.1.204-.146.327-.291.511-.146.184-.31.409-.437.541-.146.15-.3.314-.128.614.173.299.764 1.26 1.64 2.039.873.778 1.61 1.019 1.91 1.15s.473.102.646-.092c.173-.194.747-.868.946-1.165.2-.297.4-.245.674-.143s1.748.828 2.049.981c.3.153.51.225.583.348.073.123.073.715-.218 1.533z" />
+              </svg>
+              Speak with our Team
+            </a>
           </div>
           <dl className="mt-16 grid max-w-lg grid-cols-3 gap-6 border-t border-[var(--plum)]/10 pt-10">
             {[
@@ -274,45 +281,36 @@ function AtelierReel() {
 
 function RecognitionTeaser() {
   return (
-    <section className="py-14 md:py-20 bg-gradient-to-b from-transparent via-[var(--cream)] to-[var(--cream)]">
+    <section className="py-14 md:py-20">
       <div className="mx-auto max-w-7xl px-5">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <span className="text-xs uppercase tracking-[0.3em] text-[var(--gold)]">
-              Industry Recognition
-            </span>
-            <h2 className="mt-4 font-display text-4xl md:text-5xl text-[var(--plum-deep)] text-balance">
-              Recognized for craft, consistency and care.
-            </h2>
-            <p className="mt-6 max-w-lg text-[var(--ink)] leading-relaxed">
-              We're honored to be named among the continent's leading luxury gifting houses — a recognition we owe to every client, every artisan, and every team that has trusted us with their most considered moments.
-            </p>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2">
-              {[
-                { label: "Awards Won", value: "12+" },
-                { label: "Industry Recognition", value: "Continent-wide" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p className="font-display text-3xl text-[var(--plum-deep)]">{stat.value}</p>
-                  <p className="mt-1 text-xs uppercase tracking-widest text-[var(--ink)]/70">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-            <Link
-              to="/recognition"
-              className="mt-10 inline-flex items-center gap-3 rounded-xl bg-[var(--plum-deep)] hover:bg-[var(--plum)] px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition-all duration-300"
-            >
-              View all awards <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-[2rem] shadow-luxe aspect-[4/5]">
+        <div className="overflow-hidden rounded-[2.5rem] bg-[var(--plum-deep)] text-white shadow-luxe border border-[var(--plum)]/14">
+          <div className="grid lg:grid-cols-2">
+            <div className="relative min-h-[360px]">
               <img
                 src={IMG.award}
                 alt="Pearl Gifts industry award recognition"
-                className="h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--plum-deep)]/30 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[var(--plum-deep)]/40" />
+            </div>
+            <div className="p-10 md:p-16">
+              <span className="text-xs uppercase tracking-[0.3em] text-[var(--gold)]">
+                Recognition
+              </span>
+              <h2 className="mt-4 font-display text-4xl md:text-5xl text-balance">
+                Recognized for craft, consistency and care.
+              </h2>
+              <p className="mt-6 max-w-lg text-white/90 leading-relaxed font-sans">
+                We're honored to be named among the continent's leading gifting houses — a
+                recognition we owe to every team that has trusted us with their most considered
+                moments.
+              </p>
+              <Link
+                to="/recognition"
+                className="mt-10 inline-flex items-center gap-3 rounded-xl bg-[var(--gold)] hover:brightness-105 px-6 py-3.5 text-sm font-semibold text-[var(--plum-deep)] shadow-soft transition-all duration-300"
+              >
+                View the recognition <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
         </div>
@@ -321,11 +319,11 @@ function RecognitionTeaser() {
   );
 }
 
-function TestimonialCarousel() {
+function TestimonialSnippet() {
   return (
-    <section className="py-14 md:py-20">
+    <section className="py-12 md:py-18">
       <div className="mx-auto max-w-7xl px-5">
-        <div className="mx-auto max-w-2xl text-center mb-12">
+        <div className="mx-auto max-w-2xl text-center">
           <span className="text-xs uppercase tracking-[0.3em] text-[var(--gold)]">
             What Our Clients Say
           </span>
@@ -333,7 +331,64 @@ function TestimonialCarousel() {
             Trusted by teams across the continent.
           </h2>
         </div>
-        <StaggerTestimonials />
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {[
+            {
+              quote:
+                "Pearl Gifts handled our 2,400-piece year-end gifting flawlessly. Every box arrived perfectly.",
+              author: "Adaeze Okonkwo",
+              role: "Head of People, Fintech Lagos",
+            },
+            {
+              quote:
+                "The craftsmanship is genuinely world-class. Our executives still talk about their gifts months later.",
+              author: "Tunde Bakare",
+              role: "MD, Energy Group",
+            },
+            {
+              quote:
+                "We've moved our entire executive gifting program to Pearl. The service is unmatched.",
+              author: "Ifeoma Eze",
+              role: "Brand Director, Telecom Co.",
+            },
+          ].map((t) => (
+            <figure
+              key={t.author}
+              className="rounded-3xl bg-white p-8 shadow-soft transition hover:shadow-luxe"
+            >
+              <blockquote className="font-display text-lg leading-snug text-[var(--plum-deep)]">
+                "{t.quote}"
+              </blockquote>
+              <figcaption className="mt-8 flex items-center gap-3 border-t border-[var(--plum)]/10 pt-5">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--plum-deep)] text-[var(--gold)] font-display text-sm font-medium">
+                  {t.author
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </div>
+                <div>
+                  <p className="font-medium text-[var(--ink)]">{t.author}</p>
+                  <p className="text-xs text-[var(--ink)]/70">{t.role}</p>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <div className="mt-12 flex flex-wrap justify-center gap-4">
+          <Link
+            to="/recognition"
+            className="inline-flex items-center gap-2 text-sm text-[var(--plum)] hover:text-[var(--plum-deep)]"
+          >
+            See more recognition <ArrowRight className="h-4 w-4" />
+          </Link>
+          <span className="text-[var(--ink)]/30">•</span>
+          <Link
+            to="/submit-review"
+            className="inline-flex items-center gap-2 text-sm text-[var(--plum)] hover:text-[var(--plum-deep)] font-medium"
+          >
+            Submit your review <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
     </section>
   );
@@ -346,7 +401,7 @@ function Home() {
       <BrandStrip />
       <CollectionsPreview />
       <AtelierReel />
-      <TestimonialCarousel />
+      <TestimonialSnippet />
       <RecognitionTeaser />
     </SiteLayout>
   );

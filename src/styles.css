@@ -87,7 +87,6 @@
   }
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
   }
   body {
     background-color: var(--color-background);
@@ -95,7 +94,6 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "ss01", "cv11";
-    overflow-x: hidden;
   }
   h1,
   h2,
